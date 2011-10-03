@@ -1,0 +1,5 @@
+Export-Package cx.ath.mancel01.osgi.simple; \
+               cx.ath.mancel01.osgi.simple.*; \
+               cx.ath.mancel01.osgi.simple.api; \
+               cx.ath.mancel01.osgi.simple.api.*; \
+               version=${pom.version}
