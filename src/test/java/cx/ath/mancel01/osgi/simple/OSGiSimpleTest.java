@@ -44,7 +44,7 @@ public class OSGiSimpleTest {
 
                 @Override
                 public void apply(Event t) {
-                    System.out.println("Service arrived ...");
+                    System.out.println("Service arrived ... " + t.getContract());
                     arrived++;
                 }
             });
@@ -64,7 +64,7 @@ public class OSGiSimpleTest {
 
                 @Override
                 public void apply(Event t) {
-                    System.out.println("Service departure ...");
+                    System.out.println("Service departure ..." + t.getContract());
                     departed++;
                 }
             });

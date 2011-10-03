@@ -178,7 +178,8 @@ public final class ServiceRefImpl<T> implements ServiceRef<T> {
         if (refs != null) {
             for (ServiceReference r : refs) {
                 if (!clazz.isInterface()) {
-                    services.add((T) context.getService(r));
+                    //services.add((T) context.getService(r));
+                    throw new RuntimeException("Service must be based on an interface.");
                 } else {
                     services.add((T) Proxy.newProxyInstance(
                             getClass().getClassLoader(),

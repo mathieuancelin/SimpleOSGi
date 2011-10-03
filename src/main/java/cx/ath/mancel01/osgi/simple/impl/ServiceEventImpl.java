@@ -1,6 +1,7 @@
 package cx.ath.mancel01.osgi.simple.impl;
 
 import cx.ath.mancel01.osgi.simple.api.Event;
+import cx.ath.mancel01.osgi.simple.api.F.Option;
 import cx.ath.mancel01.osgi.simple.api.ServiceRef;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,6 +44,27 @@ public class ServiceEventImpl implements Event {
             assignable.put(type, typed);
         }
         return assignable.get(type);
+    }
+    
+    @Override
+    public Option<Class> getContract() {
+        if (classes == null) {
+            getServiceClasses(getClass());
+        }
+        if (classes != null && !classes.isEmpty()) {
+            Class c = classes.get(0);
+            return Option.some(c);
+        } else {
+            return Option.none();
+        }
+    }
+
+    @Override
+    public List<Class<?>> getContracts() {
+        if (classes == null) {
+            getServiceClasses(getClass());
+        }
+        return classes;
     }
 
     public List<Class<?>> getServiceClasses(Class<?> type) {
